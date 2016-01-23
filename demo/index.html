@@ -11,7 +11,8 @@
 	<script type="text/javascript" src="../lib/jquery.mousewheel.pack.js?v=3.1.3"></script>
 
 	<!-- Add fancyBox main JS and CSS files -->
-	<script type="text/javascript" src="../source/jquery.fancybox.pack.js?v=2.1.5"></script>
+	<script type="text/javascript" src="../source/jquery.fancybox.js?v=2.1.5"></script>
+	<script type="text/javascript" src="../lib/jquery.rotate.js"></script>
 	<link rel="stylesheet" type="text/css" href="../source/jquery.fancybox.css?v=2.1.5" media="screen" />
 
 	<!-- Add Button helper (this is optional) -->
@@ -31,7 +32,11 @@
 			 *  Simple image gallery. Uses default settings
 			 */
 
-			$('.fancybox').fancybox();
+			$('.fancybox').fancybox({
+				afterShow: function(){
+					// alert(this.element);
+				}
+			});
 
 			/*
 			 *  Different effects
@@ -219,7 +224,7 @@
 
 	<h3>Simple image gallery</h3>
 	<p>
-		<a class="fancybox" href="1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="1_s.jpg" alt="" /></a>
+		<a class="fancybox" href="wlzc.png" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="1_s.jpg" alt="" /></a>
 
 		<a class="fancybox" href="2_b.jpg" data-fancybox-group="gallery" title="Etiam quis mi eu elit temp"><img src="2_s.jpg" alt="" /></a>
 

@@ -52,6 +52,8 @@
 
 .fancybox-inner {
 	overflow: hidden;
+	display: table-cell;
+    vertical-align: middle;
 }
 
 .fancybox-type-iframe .fancybox-inner {
@@ -272,4 +274,22 @@
 		background-image: url(fancybox_loading@2x.gif);
 		background-size: 24px 24px; /*The size of the normal image, half the size of the hi-res image*/
 	}
+}
+
+.fancybox-image {
+	margin: auto;
+}
+
+.fancybox-rotate-wrap span {
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+}
+
+.fancybox-rotate-left span {
+	background-image: url('../source/rotate_left.png');
+}
+
+.fancybox-rotate-right span {
+	background-image: url('../source/rotate_right.png');
 }
