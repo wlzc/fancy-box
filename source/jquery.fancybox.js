@@ -241,6 +241,18 @@
 			    maxWidth: (F.rotateDeg / 90 % 2 === 0) ? '100%' : $inner.height()
 			});
 
+			if($inner.height() < $inner.width()) {
+				$img.css({
+				    height: (F.rotateDeg / 90 % 2 === 0) ? $inner.height() : $inner.height() * $inner.height() / $inner.width(),
+				    width: (F.rotateDeg / 90 % 2 === 0) ? $inner.width() : $inner.height(),
+				});
+			} else {
+				$img.css({
+				    width: (F.rotateDeg / 90 % 2 === 0) ? $inner.width() : $inner.width() * $inner.width() / $inner.height(),
+				    height: (F.rotateDeg / 90 % 2 === 0) ? $inner.height() : $inner.width()
+				});
+			}
+
 		},
 
 		open: function (group, opts) {
@@ -614,6 +626,18 @@
 				    maxHeight: (F.rotateDeg / 90 % 2 === 0) ? '100%' : $inner.width(),
 				    maxWidth: (F.rotateDeg / 90 % 2 === 0) ? '100%' : $inner.height()
 				});
+
+				if($inner.height() < $inner.width()) {
+					$img.css({
+					    height: (F.rotateDeg / 90 % 2 === 0) ? $inner.height() : $inner.height() * $inner.height() / $inner.width(),
+					    width: (F.rotateDeg / 90 % 2 === 0) ? $inner.width() : $inner.height(),
+					});
+				} else {
+					$img.css({
+					    width: (F.rotateDeg / 90 % 2 === 0) ? $inner.width() : $inner.width() * $inner.width() / $inner.height(),
+					    height: (F.rotateDeg / 90 % 2 === 0) ? $inner.height() : $inner.width()
+					});
+				}
 
 			}, (anyway && !isTouch ? 0 : 300));
 		},
