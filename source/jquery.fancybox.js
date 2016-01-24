@@ -233,7 +233,14 @@
 		 */
 		
 		rotate: function(direction) {
-			F.wrap.find('img:not([class="fancybox-rotate-ctrl"])').css('rotate', F.rotateDeg += direction == 'right' ? 90 : -90);
+			var $inner = F.inner;
+			var $img = F.wrap.find('img');
+			$img.css({
+			    rotate: (F.rotateDeg += direction == 'right' ? 90 : -90),
+			    maxHeight: (F.rotateDeg / 90 % 2 === 0) ? '100%' : $inner.width(),
+			    maxWidth: (F.rotateDeg / 90 % 2 === 0) ? '100%' : $inner.height()
+			});
+
 		},
 
 		open: function (group, opts) {
@@ -597,6 +604,13 @@
 				F.trigger('onUpdate');
 
 				didUpdate = null;
+
+				var $inner = F.inner;
+				var $img = F.wrap.find('img');
+				$img.css({
+				    maxHeight: (F.rotateDeg / 90 % 2 === 0) ? '100%' : $inner.width(),
+				    maxWidth: (F.rotateDeg / 90 % 2 === 0) ? '100%' : $inner.height()
+				});
 
 			}, (anyway && !isTouch ? 0 : 300));
 		},

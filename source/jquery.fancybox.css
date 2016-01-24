@@ -274,6 +274,10 @@
 	}
 }
 
+.fancybox-image {
+	margin: auto;
+}
+
 .fancybox-rotate-wrap span {
 	width: 32px;
 	height: 32px;
