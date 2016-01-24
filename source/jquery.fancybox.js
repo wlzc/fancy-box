@@ -146,8 +146,10 @@
 				closeBtn : '<a title="Close" class="fancybox-item fancybox-close" href="javascript:;"></a>',
 				next     : '<a title="Next" class="fancybox-nav fancybox-next" href="javascript:;"><span></span></a>',
 				prev     : '<a title="Previous" class="fancybox-nav fancybox-prev" href="javascript:;"><span></span></a>',
-				left     : '<a title="Left Rotate" class="ui circular icon button fancybox-rotate-left" href="javascript:;"><i class="arrow left icon"></i></a>',
-				right    : '<a title="Right Rotate" class="ui circular icon button fancybox-rotate-right" href="javascript:;"><i class="arrow right icon"></i></a>',
+				// left     : '<a title="Left Rotate" class="ui circular icon button fancybox-rotate-left" href="javascript:;"><i class="arrow left icon"></i></a>',
+				// right    : '<a title="Right Rotate" class="ui circular icon button fancybox-rotate-right" href="javascript:;"><i class="arrow right icon"></i></a>',
+				left     : '<a title="左旋转" class="fancybox-rotate-left" href="javascript:;"><img class="fancybox-rotate-ctrl" src="../source/rotate_left.png" /></a>',
+				right    : '<a title="右旋转" class="fancybox-rotate-right" href="javascript:;"><img class="fancybox-rotate-ctrl" src="../source/rotate_right.png" /></a>',
 				loading  : '<div id="fancybox-loading"><div></div></div>'
 			},
 
@@ -229,11 +231,12 @@
 		 */
 		
 		rotate: function(direction) {
-			animate({
-			  el: F.wrap.find('img'),
-			  // direction: direction == 'right' ? 'normal' : 'reverse',
-			  rotate: (F.rotateDeg += direction == 'right' ? 90 : -90)
-			});
+			// animate({
+			//   el: F.wrap.find('img'),
+			//   // direction: direction == 'right' ? 'normal' : 'reverse',
+			//   rotate: (F.rotateDeg += direction == 'right' ? 90 : -90)
+			// });
+			F.wrap.find('img:not([class="fancybox-rotate-ctrl"])').css('rotate', F.rotateDeg += direction == 'right' ? 90 : -90);
 		},
 
 		open: function (group, opts) {
@@ -816,7 +819,7 @@
 			}
 
 			if ($.type(padding) === 'number') {
-				coming.padding = [padding, padding, padding, padding];
+				coming.padding = [padding, padding, 0, padding];
 			}
 
 			// 'modal' propery is just a shortcut
@@ -1468,8 +1471,10 @@
 				});
 			}
 
+			var $rotateWrap = $('<div style="text-align: center;" class="fancybox-rotate-wrap"/></div>').appendTo(F.skin);
+
 			if (current.left) {
-				$(current.tpl.left).appendTo(F.skin).bind('click.fb', function(e) {
+				$(current.tpl.left).appendTo($rotateWrap).bind('click.fb', function(e) {
 					e.preventDefault();
 
 					F.rotate('left');
@@ -1477,7 +1482,7 @@
 			}
 
 			if (current.right) {
-				$(current.tpl.right).appendTo(F.skin).bind('click.fb', function(e) {
+				$(current.tpl.right).appendTo($rotateWrap).bind('click.fb', function(e) {
 					e.preventDefault();
 
 					F.rotate('right');
