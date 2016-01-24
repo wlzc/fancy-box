@@ -231,11 +231,6 @@
 		 */
 		
 		rotate: function(direction) {
-			// animate({
-			//   el: F.wrap.find('img'),
-			//   // direction: direction == 'right' ? 'normal' : 'reverse',
-			//   rotate: (F.rotateDeg += direction == 'right' ? 90 : -90)
-			// });
 			F.wrap.find('img:not([class="fancybox-rotate-ctrl"])').css('rotate', F.rotateDeg += direction == 'right' ? 90 : -90);
 		},
 
