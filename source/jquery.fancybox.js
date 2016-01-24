@@ -414,11 +414,14 @@
 			if (!F.current) {
 				F._afterZoomOut( coming );
 			}
+
 		},
 
 		// Start closing animation if is open; remove immediately if opening/closing
 		close: function (event) {
 			F.cancel();
+
+			F.rotateDeg = 0;
 
 			if (false === F.trigger('beforeClose')) {
 				return;
